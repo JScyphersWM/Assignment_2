@@ -1,0 +1,13 @@
+READ ME:
+
+Steps to get this working: 
+
+1. Set up to pre-train a model. This step assumes at the least you have a directory of python files to be inputted as training data for the model. If so, proceed to step 2. If you already have a valid csv file to be used as input, proceed to step 4. If you wish to skip the pre-training process and move straight to the fine tuning and evluation phase, proceed to step 5.
+
+2. With all the python files you want in the input directory, run the extractor.py function. This will produce a file called condensed_files.txt, a collection of all the functions from every python file condensed down into one txt file. With this you can proceed to step 3.
+
+3. With a txt file containing python functions, ensure this is either named condensed_files.txt or change process_extracted.py line 3 to the name of your file, run process_extracted.py to create the csv we will need to train our model. Proceed to step 4.
+
+4. With a valid csv file cointaing the list of functions and whether they have an if statement, you're ready to begin training your model. Ensure either this csv is named processed_files.csv or you change trainer.py line 5 to the name of your csv, then run trainer.py. This will take some time, if you want better quality or a faster result, adjust the learning speed, batch size, and number of epoch accordingly. Once this is done, you will have a folder called pretrained_model with a numer of folders marking the checkpoints in the generation, the tokenizer files, and most importantly, the model.safetensors. Along with this, in the dataset generation, another folder will have been made called fine_tune_dataset. With this you are ready to proceed to step 5.
+
+5. This step assumes you have a pretrained model and a folder of data seperated for fine tuning. Ensure the fine_tune_dataset folder was either successfully created or unzip the one provided as well as ensuring a folder called pretrained_model has been successfully created, or you can untar the one provided. Once done, run fine_tune.py and obersve the output.
